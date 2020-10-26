@@ -14,3 +14,4 @@ resized=cv2.resize(img,(int(img.shape[1]/size),int(img.shape[0]/size)))
 cv2.imshow("Gray",resized)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+# This might work
