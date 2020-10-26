@@ -2,7 +2,7 @@
 import cv2
 size=int(input())
 face_cascade=cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+# eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
 img=cv2.imread("D:\\Images\\Ananya.jpg")
 gray_img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 faces=face_cascade.detectMultiScale(gray_img,scaleFactor=1.05,minNeighbors=5)
