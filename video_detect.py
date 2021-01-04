@@ -12,5 +12,6 @@ while True:
     if key==ord('q'):
         break
 print(a)
+
 video.release()
 cv2.destroyAllWindows()
