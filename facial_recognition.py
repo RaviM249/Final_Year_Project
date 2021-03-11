@@ -39,7 +39,7 @@ while(True):
         else:
             font=cv2.FONT_HERSHEY_SIMPLEX
             name="unknown"
-            speak("unknown")
+            # speak("unknown")
             color=(0,0,255)
             stroke=2
             cv2.putText(frame,name,(x,y),font,1,color,stroke,cv2.LINE_AA)
