@@ -26,7 +26,7 @@ while True:
         break
     if(face_counter_curr!= face_counter_prev):
         print(face_counter_curr, "faces detected")
-        # speak(str(face_counter_curr)+ "faces detected")
+        # speak(str(face_counter_curr)+ "faces detected")            
         face_counter_prev=face_counter_curr
     
 cap.release()
