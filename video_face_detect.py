@@ -22,7 +22,7 @@ while True:
         cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),3)
     cv2.imshow('img',img)
     k=cv2.waitKey(30) & 0xff
-    if k==27:
+    if k==ord("q"):
         break
     if(face_counter_curr!= face_counter_prev):
         print(face_counter_curr, "faces detected")

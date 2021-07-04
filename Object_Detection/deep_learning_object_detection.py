@@ -68,6 +68,6 @@ cv2.imshow("Output", image)
 cv2.waitKey(0)
 
 # USAGE
-# python deep_learning_object_detection.py --image images/one.jpg --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
+#  python deep_learning_object_detection.py --image images/one.jpg --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
 
 

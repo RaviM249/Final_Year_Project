@@ -18,6 +18,8 @@ with open("labels.pickle",'rb') as f:
     labels={v:k for k,v in og_labels.items()}
 
 cap=cv2.VideoCapture(0)
+temp1=""
+temp2=""
 while(True):
     ret,frame=cap.read()
     gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
@@ -32,14 +34,18 @@ while(True):
             # print(labels[id_])
             font=cv2.FONT_HERSHEY_SIMPLEX
             name=labels[id_]
-            speak(name) 
+            if(temp1!=name):
+                speak(name) 
+                temp1=name
             color=(255,255,255)
             stroke=2
             cv2.putText(frame,name,(x,y),font,1,color,stroke,cv2.LINE_AA)
         else:
             font=cv2.FONT_HERSHEY_SIMPLEX
             name="unknown"
-            # speak("unknown")
+            if(temp2!="unknown"):
+                speak("unknown")
+                temp2="unknown"
             color=(0,0,255)
             stroke=2
             cv2.putText(frame,name,(x,y),font,1,color,stroke,cv2.LINE_AA)
