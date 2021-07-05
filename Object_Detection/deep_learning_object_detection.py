@@ -1,7 +1,13 @@
 import numpy as np
 import argparse
 import cv2
-
+import pyttsx3
+engine=pyttsx3.init('sapi5')
+voices=engine.getProperty('voices')# print(voices) to get the object    
+engine.setProperty('voice',voices[1].id)
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
 	help="path to input image")
@@ -21,7 +27,7 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
 # load our serialized model from disk
-print("[INFO] loading model...")
+speak("loading model...")
 net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 # load the input image and construct an input blob for the image
@@ -34,7 +40,7 @@ blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843, (300, 300)
 
 # pass the blob through the network and obtain the detections and
 # predictions
-print("[INFO] computing object detections...")
+speak("computing object detections...")
 net.setInput(blob)
 detections = net.forward()
 
@@ -56,7 +62,7 @@ for i in np.arange(0, detections.shape[2]):
 
 		# display the prediction
 		label = "{}: {:.2f}%".format(CLASSES[idx], confidence * 100)
-		print("[INFO] {}".format(label))
+		speak("I could identify {}".format(label))
 		cv2.rectangle(image, (startX, startY), (endX, endY),
 			COLORS[idx], 2)
 		y = startY - 15 if startY - 15 > 15 else startY + 15
@@ -68,6 +74,6 @@ cv2.imshow("Output", image)
 cv2.waitKey(0)
 
 # USAGE
-#  python deep_learning_object_detection.py --image images/one.jpg --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
+# python deep_learning_object_detection.py --image images/four.jpg --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
 
 
